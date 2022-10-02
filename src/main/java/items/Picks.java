@@ -2,7 +2,10 @@ package items;
 
 public class Picks extends Item {
 
-    public Picks(double price,double sellingPrice) {
-        super(price,sellingPrice);
+    private String description;
+
+    public Picks(double buyingPrice, double sellingPrice, String description) {
+        super(buyingPrice, sellingPrice);
+        this.description = description;
     }
 }

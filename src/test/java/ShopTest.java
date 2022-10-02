@@ -1,7 +1,10 @@
 import instruments.Guitar;
 import instruments.Instrument;
+import instruments.InstrumentTypes;
 import instruments.Trumpet;
+import interfaces.ISell;
 import items.Item;
+import items.Picks;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,12 +14,19 @@ class ShopTest {
 
     Shop shop;
     Item item;
+    Instrument instrument1;
+    Instrument instrument2;
+    Instrument instrument3;
 
 
     @BeforeEach
     void setUp() {
-        item = new Item(10,15);
         shop = new Shop("theTrumpet");
+        instrument1 = new Guitar(50, 100, InstrumentTypes.STRING, 6, "Guitar");
+        instrument2 = new Guitar(50, 100, InstrumentTypes.STRING, 6, "Guitar");
+        instrument3 = new Guitar(50, 100, InstrumentTypes.STRING, 6, "Guitar");
+
+        item = new Picks(20, 50, "Pick");
     }
 
     @Test
@@ -31,14 +41,14 @@ class ShopTest {
 
     @Test
     void canStockUpInstruments() {
-        Trumpet trumpet = new Trumpet(100, 150, 3);
+        Trumpet trumpet = new Trumpet(90, 180, InstrumentTypes.BRASS, 3, "Trumpet");
         shop.addItemToStock(trumpet);
         assertEquals(trumpet, shop.getStock().get(0));
     }
 
     @Test
     void canStockUpItems(){
-        Item item = new Item(10,15);
+        Picks picks = new Picks(15,18, "Pick");
         shop.addItemToStock(item);
         assertEquals(1, shop.getStock().size());
     }
@@ -56,6 +66,18 @@ class ShopTest {
         shop.removeItem(item);
         assertEquals(0, shop.getStock().size());
     }
+
+    @Test
+    void canCalculateTotalProfit(){
+        shop.addItemToStock(instrument1);
+        shop.addItemToStock(instrument2);
+        shop.addItemToStock(item);
+        assertEquals(3, shop.getStock().size());
+        assertEquals(130, shop.getPotentialProfits(), 0.0);
+
+    }
+
+
 
 
 

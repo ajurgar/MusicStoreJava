@@ -4,11 +4,13 @@ public class Guitar extends Instrument{
 
     private int strings;
     private String description;
+    private String sound;
 
-    public Guitar(double buyingPrice, double sellingPrice, int strings) {
-        super(buyingPrice, sellingPrice);
+    public Guitar(double buyingPrice, double sellingPrice, InstrumentTypes type, int strings, String description) {
+        super(buyingPrice, sellingPrice, type);
         this.strings = strings;
-        this.description = "This is a guitar";
+        this.description = description;
+        this.sound = "Piiii";
     }
 
     public int getStringsCount(){
@@ -22,4 +24,10 @@ public class Guitar extends Instrument{
     public String getDescription() {
         return description;
     }
+
+    public String play(){
+        return sound;
+    }
+
+
 }

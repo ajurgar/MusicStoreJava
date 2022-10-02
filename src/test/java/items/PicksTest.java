@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PicksTest {
 
-    Item pick = new Picks(10,15);
+    Item pick = new Picks(10,15, "Pick");
 
 
 
@@ -19,5 +19,10 @@ class PicksTest {
     @Test
     void hasSellingPrice(){
         assertEquals(15, pick.getSellingPrice());
+    }
+
+    @Test
+    void canCalculateMarkup(){
+        assertEquals(5, pick.calculateMarkup());
     }
 }

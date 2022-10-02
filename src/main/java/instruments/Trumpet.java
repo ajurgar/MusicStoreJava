@@ -2,19 +2,17 @@ package instruments;
 
 import interfaces.ISell;
 
-public class Trumpet extends Instrument implements ISell {
+public class Trumpet extends Instrument {
 
     private int valves;
     private String description;
+    private String sound;
 
-    public Trumpet(double buyingPrice, double sellingPrice, int valves) {
-        super(buyingPrice, sellingPrice);
+    public Trumpet(double buyingPrice, double sellingPrice, InstrumentTypes type, int valves, String description) {
+        super(buyingPrice, sellingPrice, type);
         this.valves = valves;
-        this.description = "this is a trumpet";
-    }
-
-    public String play(){
-        return "Toot";
+        this.description = description;
+        this.sound = "Toooot";
     }
 
     public int getValvesCount(){
@@ -23,5 +21,9 @@ public class Trumpet extends Instrument implements ISell {
 
     public String getDescription() {
         return description;
+    }
+
+    public String play() {
+        return sound;
     }
 }

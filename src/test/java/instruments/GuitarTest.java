@@ -14,18 +14,18 @@ public class GuitarTest {
 
     @BeforeEach
     void setUp(){
-        guitar = new Guitar(100, 150 , 69);
-        trumpet = new Trumpet(90, 180, 3);
+        guitar = new Guitar(100, 150 , InstrumentTypes.STRING,  6, "Guitar");
+        trumpet = new Trumpet(90, 180, InstrumentTypes.BRASS, 3, "Trumpet");
     }
 
     @Test
     void hasStrings(){
-        assertEquals(69, guitar.getStringsCount());
+        assertEquals(6, guitar.getStringsCount());
     }
 
     @Test
     void instrumentsHavePrices(){
-        Instrument guitar = new Guitar(100, 150,2);
+        Instrument guitar = new Guitar(100, 150 , InstrumentTypes.STRING,  6, "Guitar");
         assertEquals(100, guitar.getBuyingPrice());
         assertEquals(150, guitar.getSellingPrice());
         assertEquals(90, trumpet.getBuyingPrice());
@@ -44,10 +44,15 @@ public class GuitarTest {
     }
     @Test
     void instrumentHasDescription() {
-        assertEquals("This is a guitar", guitar.getDescription());
-        assertEquals("this is a trumpet", trumpet.getDescription());
+        assertEquals("Guitar", guitar.getDescription());
+        assertEquals("Trumpet", trumpet.getDescription());
     }
 
+
+    @Test
+    public void canPlayInstrument(){
+        assertEquals("Piiii", guitar.play());
+    }
 
 
 
